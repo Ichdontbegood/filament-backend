@@ -17,17 +17,31 @@ mongoose.connect(process.env.MONGO_URI)
 
 // Databázový model (Schéma filamentu)
 const filamentSchema = new mongoose.Schema({
-    brand: String,        // Značka
-    type: String,         // PLA, PETG, ASA...
-    color: String,        // Název barvy
-    colorHex: String,     // Kód barvy pro UI (např. 0xFF0000)
-    weightTotal: Number,  // Původní váha (g)
-    weightLeft: Number,   // Zbývající váha (g)
-    price: Number,        // Cena za cívku
-    tempNozzle: String,   // Např. "210-230"
-    tempBed: String,      // Např. "60"
-    drying: String,       // Např. "4h @ 50°C"
-    notes: String,        // Poznámky
+    // Základní info
+    brand: String,
+    type: String,
+    color: String,
+    price: Number,          // Cena za cívku
+    weightTotal: Number,    // Váha filamentu (čistá)
+    weightLeft: Number,     // Kolik zbývá
+    emptySpoolWeight: Number, // Váha prázdné cívky (NOVÉ)
+
+    // Teploty
+    tempNozzleMin: Number,  // (NOVÉ)
+    tempNozzleMax: Number,  // (NOVÉ)
+    tempBedMin: Number,     // (NOVÉ)
+    tempBedMax: Number,     // (NOVÉ)
+
+    // Rychlosti
+    printSpeedMin: Number,  // (NOVÉ)
+    printSpeedMax: Number,  // (NOVÉ)
+    maxVolumetricSpeed: Number, // (NOVÉ)
+
+    // Sušení
+    dryingTemp: Number,     // (NOVÉ)
+    dryingTime: Number,     // (NOVÉ - hodiny)
+
+    // Systémové
     dateAdded: { type: Date, default: Date.now }
 });
 
