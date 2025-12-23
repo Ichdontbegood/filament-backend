@@ -24,6 +24,9 @@ const filamentSchema = new mongoose.Schema({
     weightTotal: Number,  // Původní váha (g)
     weightLeft: Number,   // Zbývající váha (g)
     price: Number,        // Cena za cívku
+    tempNozzle: String,   // Např. "210-230"
+    tempBed: String,      // Např. "60"
+    drying: String,       // Např. "4h @ 50°C"
     notes: String,        // Poznámky
     dateAdded: { type: Date, default: Date.now }
 });
